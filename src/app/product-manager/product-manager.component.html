@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Action</th>
+		</tr>
+		<tr *ngFor="let product of products">
+			<th>{{product.id}}</th>
+			<th>{{product.name}}</th>
+			<th>{{product.price}}</th>
+			<th><button class="btn btn-primary" (click)="hienthi(product)" >Chi tiết</button>
+				<button class="btn btn-primary" (click)="xoa(product.id)">Xóa</button>
+			</th>
+		</tr>
+	</thead>
+</table>
+<div class="ht" *ngIf="selected">
+	<app-product-detail [detail]="selected"></app-product-detail>
+</div>
