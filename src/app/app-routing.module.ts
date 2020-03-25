@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'product/detail/:id',component:ProductDetailComponent},
   {path: 'about',component:AboutComponent},
   {path: 'product/manager',component:ProductManagerComponent},
+  {path: 'product/add',component:AddProductComponent},
   {path: '404',component:NotFoundComponent},
   {path: '**',redirectTo:'404', pathMatch:'full'}
 ];
