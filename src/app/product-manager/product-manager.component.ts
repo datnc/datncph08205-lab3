@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../Product";
-import { data } from "../MockData";
+import {ProductService} from '../service/product.service';
 
 @Component({
   selector: "app-product-manager",
@@ -8,15 +8,25 @@ import { data } from "../MockData";
   styleUrls: ["./product-manager.component.css"]
 })
 export class ProductManagerComponent implements OnInit {
-  constructor() {}
+  products : Product[];
+  constructor(
+    private productService : ProductService
+  ) {}
 
-  ngOnInit() {}
-  products = data;
-  selected: Product;
-  hienthi(product) {
-      this.selected = product;
+  ngOnInit() {
+  this.products = this.productService.getProducts();
   }
-  xoa(id){
-    return this.products = this.products.filter(product => product.id != id);
+    getProducts(){
+    this.productService.getProducts().subscribe(response => this.products = response, error => console.log(error));
   }
+
+  // products;
+  // selected: Product;
+  // hienthi(product) {
+  //     this.selected = product;
+  // }
+   RemoveProducts(id){
+     console.log("component")
+     this.products = this.productService.removeProducts(id);
+   }
 }

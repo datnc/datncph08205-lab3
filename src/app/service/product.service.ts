@@ -8,6 +8,9 @@ export class ProductService {
   products = data;
   constructor() { }
 
+ getProducts(){
+    return this.products;
+  }
   getProduct(id){
     return this.products.find(product => product.id == id);
   }
@@ -25,5 +28,5 @@ export class ProductService {
     this.products.push(newObj);
     console.log(this.products)
 
-  }
+}
 }

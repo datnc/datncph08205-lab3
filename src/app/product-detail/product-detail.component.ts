@@ -1,15 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Product} from '../Product';
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import { ProductService } from '../service/product.service';
+import { Product } from '../Product';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  @Input('detail') abc : Product; 
-  constructor() { }
+product : Product;
+  constructor(
+    private productService : ProductService,
+    private activatedRoute : ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.getProduct();
   }
-
+  getProduct(){
+    this.activatedRoute.params.subscribe(param => {
+      this.product = this.productService.getProduct(param.id);
+    });
+  }
 }
