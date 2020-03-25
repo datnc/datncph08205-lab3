@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>STT</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		<tr *ngFor="let product of products;index as i">
+			<th scope="row">{{i}}</th>
+			<td><a routerLink="/product/detail/{{product.id}}">{{product.name}}</a></td>
+			<th>{{product.price}}</th>
+		</tr>
+	</thead>
+</table>
